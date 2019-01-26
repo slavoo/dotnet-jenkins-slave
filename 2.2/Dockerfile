@@ -23,9 +23,13 @@ ENV DOTNET_CORE_VERSION=2.2 \
 
 COPY contrib/bin/scl_enable /usr/local/bin/scl_enable
 
+RUN curl -sL https://rpm.nodesource.com/setup_10.x | bash -
+
 # Install
-RUN yum install -y centos-release-dotnet centos-release-scl-rh && \
-    INSTALL_PKGS="rh-dotnet22 rh-nodejs8-npm" && \
+RUN yes | rpm -Uvh https://packages.microsoft.com/config/rhel/7/packages-microsoft-prod.rpm
+
+RUN yum install -y centos-release-scl-rh && \
+    INSTALL_PKGS="dotnet-sdk-2.2 nodejs" && \
     yum install -y --setopt=tsflags=nodocs $INSTALL_PKGS && \
     rpm -V $INSTALL_PKGS && \
     yum clean all -y && \
