@@ -23,6 +23,8 @@ ENV DOTNET_CORE_VERSION=2.2 \
 
 COPY contrib/bin/scl_enable /usr/local/bin/scl_enable
 
+COPY NuGetDefaults.Config /usr/local/share/
+
 RUN curl -sL https://rpm.nodesource.com/setup_10.x | bash -
 
 # Install
