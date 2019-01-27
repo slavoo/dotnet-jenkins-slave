@@ -23,8 +23,6 @@ ENV DOTNET_CORE_VERSION=2.2 \
 
 COPY contrib/bin/scl_enable /usr/local/bin/scl_enable
 
-COPY NuGetDefaults.Config /usr/local/share/
-
 RUN curl -sL https://rpm.nodesource.com/setup_10.x | bash -
 
 # Install
@@ -37,6 +35,8 @@ RUN yum install -y centos-release-scl-rh && \
     yum clean all -y && \
 # yum cache files may still exist (and quite large in size)
     rm -rf /var/cache/yum/*
+
+COPY NuGetDefaults.Config /usr/local/share/
 
 RUN chown -R 1001:0 $HOME && \
     chmod -R g+rw $HOME
