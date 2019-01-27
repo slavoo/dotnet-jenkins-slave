@@ -36,9 +36,7 @@ RUN yum install -y centos-release-scl-rh && \
 # yum cache files may still exist (and quite large in size)
     rm -rf /var/cache/yum/*
 
-COPY NuGetDefaults.Config /usr/share/NuGet/
-
-COPY NuGetDefaults.Config /home/jenkins/NuGet.Config
+COPY NuGetDefaults.config /usr/share/NuGet/
 
 RUN chown -R 1001:0 $HOME && \
     chmod -R g+rw $HOME
