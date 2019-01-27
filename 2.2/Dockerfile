@@ -38,6 +38,8 @@ RUN yum install -y centos-release-scl-rh && \
 
 COPY NuGetDefaults.Config /usr/share/NuGet/
 
+COPY NuGetDefaults.Config /home/jenkins/NuGet.Config
+
 RUN chown -R 1001:0 $HOME && \
     chmod -R g+rw $HOME
 
